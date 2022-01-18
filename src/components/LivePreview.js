@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { LiveProvider, LivePreview } from 'react-live'
+import { Provider, Preview, Error } from 'jarle'
 import { event } from '../constants'
 
 function Live({ code, channel, scope }) {
@@ -17,9 +17,10 @@ function Live({ code, channel, scope }) {
   }, [])
 
   return (
-    <LiveProvider code={_code} scope={scope}>
-      <LivePreview />
-    </LiveProvider>
+    <Provider code={_code} scope={scope}>
+      <Preview />
+      <Error />
+    </Provider>
   )
 }
 
