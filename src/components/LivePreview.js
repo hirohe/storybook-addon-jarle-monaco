@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Provider, Preview, Error } from 'jarle'
 import { event } from '../constants'
 
-function Live({ code, channel, scope }) {
+function LivePreview({ code, channel, providerProps }) {
   const [_code, setCode] = useState(code)
 
   useEffect(() => {
@@ -17,11 +17,11 @@ function Live({ code, channel, scope }) {
   }, [])
 
   return (
-    <Provider code={_code} scope={scope}>
+    <Provider {...providerProps} code={_code}>
       <Preview />
       <Error />
     </Provider>
   )
 }
 
-export default Live
+export default LivePreview
