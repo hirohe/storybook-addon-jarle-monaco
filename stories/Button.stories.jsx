@@ -19,7 +19,10 @@ const Template = (args) => (
   <LivePreview
     channel={addons.getChannel()}
     code={`() => <Button primary label={foo} />`}
-    scope={{ Button, foo: 'bar' }}
+    providerProps={{
+      Button,
+      foo: 'bar',
+    }}
   />
 )
 
