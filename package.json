@@ -1,8 +1,11 @@
 {
   "name": "storybook-addon-jarle-monaco",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "storybook.js addon providing react-live preview and monaco-editor editing",
   "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/hirohe/storybook-addon-jarle-monaco"
+  },
   "scripts": {
     "style-lint": "prettier -w \"src/**/*.js\"",
     "storybook": "start-storybook --no-manager-cache -p 6006",
