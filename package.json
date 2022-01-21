@@ -12,6 +12,7 @@
   "scripts": {
     "style-lint": "prettier -w \"src/**/*.js\"",
     "storybook": "start-storybook --no-manager-cache -p 6006",
+    "build-storybook": "build-storybook",
     "build": "tsc && babel ./src --out-dir ./dist"
   },
   "author": "hirohe <hesreg@hotmail.com>",
