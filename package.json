@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "storybook.js addon providing react-live preview and monaco-editor editing",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "url": "https://github.com/hirohe/storybook-addon-jarle-monaco"
   },
