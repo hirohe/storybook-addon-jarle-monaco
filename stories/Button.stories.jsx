@@ -2,7 +2,7 @@ import React from 'react';
 import addons from '@storybook/addons';
 
 import { Button } from './Button';
-import LivePreview from '../src/components/LivePreview';
+import { generateLivePreviewStory, LivePreview } from '../src'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -14,22 +14,32 @@ export default {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => (
+export const LiveEdit = generateLivePreviewStory({
+  code: `() => <Button primary label={foo} />`,
+  scope: {
+    Button,
+    foo: 'bar',
+  }
+})
+
+export const Primary = () => (
+  <Button primary label="Primary" />
+);
+
+export const LiveEdit2 = () => (
   <LivePreview
     channel={addons.getChannel()}
-    code={`() => <Button primary label={foo} />`}
+    code={`<Button primary label={'hello'} />`}
     providerProps={{
-      Button,
-      foo: 'bar',
+      scope: {
+        Button,
+      }
     }}
   />
 )
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
-
+LiveEdit2.parameters = {
+  liveEdit: {
+    show: true
+  }
+}

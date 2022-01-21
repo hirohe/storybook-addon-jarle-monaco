@@ -6,7 +6,7 @@
   "scripts": {
     "style-lint": "prettier -w \"src/**/*.js\"",
     "storybook": "start-storybook --no-manager-cache -p 6006",
-    "build": "babel ./src --out-dir ./dist"
+    "build": "tsc && babel ./src --out-dir ./dist"
   },
   "author": "hirohe <hesreg@hotmail.com>",
   "license": "MIT",
@@ -24,7 +24,9 @@
     "@storybook/addon-links": "^6.4.12",
     "@storybook/react": "^6.4.12",
     "babel-loader": "^8.2.3",
-    "prettier": "^2.5.1"
+    "monaco-editor": "^0.31.1",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
   },
   "peerDependencies": {
     "@storybook/addons": "^6",
