@@ -4,7 +4,8 @@
   "description": "storybook.js addon providing react-live preview and monaco-editor editing",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "preset.js"
   ],
   "storybook": {
     "displayName": "Live Edit - Jarle & Monaco",
