@@ -6,7 +6,23 @@
   "files": [
     "dist"
   ],
+  "storybook": {
+    "displayName": "Live Edit - Jarle & Monaco",
+    "icon": "https://jquense.github.io/jarle/img/logo.svg",
+    "supportedFrameworks": [
+      "react"
+    ]
+  },
+  "keywords": [
+    "storybook-addons",
+    "storybook-addon",
+    "live-edit",
+    "jarle",
+    "monaco",
+    "react"
+  ],
   "repository": {
+    "type": "git",
     "url": "https://github.com/hirohe/storybook-addon-jarle-monaco"
   },
   "scripts": {
