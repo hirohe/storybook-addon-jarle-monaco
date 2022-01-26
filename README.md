@@ -98,4 +98,13 @@ LiveEditWithLiveDecorator.parameters = {
 }
 ```
 
-check the [Jarle's docs](https://jquense.github.io/jarle/) for more information
+## Config
+
+liveEdit config in story's parameters
+
+| property          | type    | default | description                                      |
+|-------------------|---------|---------|--------------------------------------------------|
+| showEditor        | boolean | false   | show the live edit panel or not                  |
+| withLiveDecorator | boolean | false   | wrap the story with LivePreview decorator or not |
+
+you can add Jarle's Provider props in liveEdit, check the [Jarle's docs](https://jquense.github.io/jarle/) for more information.
