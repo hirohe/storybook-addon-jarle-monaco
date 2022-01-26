@@ -9,7 +9,7 @@ addons.register('storybook/react-live-edit', (api) => {
     title: 'Live Edit',
     render: ({ active, key }) => {
       const storyData = api.getCurrentStoryData()
-      const show = storyData?.parameters?.liveEdit?.show
+      const show = !!(storyData?.parameters?.liveEdit?.showEditor)
       return (
         <AddonPanel active={show && active} key={key}>
           <LiveEditor channel={addons.getChannel()} />

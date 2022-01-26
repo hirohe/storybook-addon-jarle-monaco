@@ -14,7 +14,7 @@ export default {
   },
 };
 
-export const LiveEdit = generateLivePreviewStory({
+export const LiveEditDemo = generateLivePreviewStory({
   code: `() => <Button primary label={foo} />`,
   scope: {
     Button,
@@ -22,11 +22,11 @@ export const LiveEdit = generateLivePreviewStory({
   }
 })
 
-export const Primary = () => (
+export const DemoWithoutLiveEdit = () => (
   <Button primary label="Primary" />
 );
 
-export const LiveEdit2 = () => (
+export const LiveEditUseLivePreview = () => (
   <LivePreview
     channel={addons.getChannel()}
     code={`<Button primary label={'hello'} />`}
@@ -38,8 +38,20 @@ export const LiveEdit2 = () => (
   />
 )
 
-LiveEdit2.parameters = {
+LiveEditUseLivePreview.parameters = {
   liveEdit: {
-    show: true
+    showEditor: true,
+  }
+}
+
+export const LiveEditWithLiveDecorator = () => <Button primary label="hello" />
+
+LiveEditWithLiveDecorator.parameters = {
+  liveEdit: {
+    showEditor: true,
+    withLiveDecorator: true,
+    scope: {
+      Button,
+    }
   }
 }
