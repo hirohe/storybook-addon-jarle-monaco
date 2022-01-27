@@ -4,25 +4,23 @@ import addons from '@storybook/addons'
 import { Story } from '@storybook/api'
 import { LiveEditConfig } from './types'
 
-export {
-  LivePreview,
-}
+export { LivePreview }
 
 /**
  * this is HoC that wraps the story with the LivePreview component
  * returned component will have liveEdit in parameters
  */
-export function generateLivePreviewStory(props: Omit<LivePreviewProps, 'channel'>) {
+export function generateLivePreviewStory(
+  props: Omit<LivePreviewProps, 'channel'>
+) {
   const Story = () => {
-    return (
-      <LivePreview {...props} channel={addons.getChannel()} />
-    )
+    return <LivePreview {...props} channel={addons.getChannel()} />
   }
 
   Story.parameters = {
     liveEdit: {
-      showEditor: true
-    }
+      showEditor: true,
+    },
   }
 
   return Story
@@ -31,7 +29,7 @@ export function generateLivePreviewStory(props: Omit<LivePreviewProps, 'channel'
 const DefaultLiveEdit: LiveEditConfig = {
   showEditor: false,
   withLiveDecorator: false,
-  scope: {}
+  scope: {},
 }
 
 /**
@@ -40,7 +38,8 @@ const DefaultLiveEdit: LiveEditConfig = {
  * but you still need to provide scope or custom {@see LivePreviewProps} via liveEdit in the story's parameters.
  */
 export function liveDecorator(Story: any, storyData: Story) {
-  const liveEdit = storyData.parameters?.liveEdit as LiveEditConfig || DefaultLiveEdit
+  const liveEdit =
+    (storyData.parameters?.liveEdit as LiveEditConfig) || DefaultLiveEdit
   const { showEditor, withLiveDecorator, ...livePreviewProps } = liveEdit
   if (!withLiveDecorator) return <Story />
 

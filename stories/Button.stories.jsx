@@ -1,7 +1,7 @@
-import React from 'react';
-import addons from '@storybook/addons';
+import React from 'react'
+import addons from '@storybook/addons'
 
-import { Button } from './Button';
+import { Button } from './Button'
 import { generateLivePreviewStory, LivePreview } from '../src'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -12,19 +12,17 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-};
+}
 
 export const LiveEditDemo = generateLivePreviewStory({
   code: `() => <Button primary label={foo} />`,
   scope: {
     Button,
     foo: 'bar',
-  }
+  },
 })
 
-export const DemoWithoutLiveEdit = () => (
-  <Button primary label="Primary" />
-);
+export const DemoWithoutLiveEdit = () => <Button primary label="Primary" />
 
 export const LiveEditUseLivePreview = () => (
   <LivePreview
@@ -33,7 +31,7 @@ export const LiveEditUseLivePreview = () => (
     providerProps={{
       scope: {
         Button,
-      }
+      },
     }}
   />
 )
@@ -41,7 +39,7 @@ export const LiveEditUseLivePreview = () => (
 LiveEditUseLivePreview.parameters = {
   liveEdit: {
     showEditor: true,
-  }
+  },
 }
 
 export const LiveEditWithLiveDecorator = () => <Button primary label="hello" />
@@ -52,6 +50,6 @@ LiveEditWithLiveDecorator.parameters = {
     withLiveDecorator: true,
     scope: {
       Button,
-    }
-  }
+    },
+  },
 }

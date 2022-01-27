@@ -11,7 +11,12 @@ export interface LivePreviewProps<TScope extends {} = {}> {
   providerProps?: Partial<Props<TScope>>
 }
 
-const LivePreview: React.FC<LivePreviewProps> = ({ code, channel, scope, providerProps = {} }) => {
+const LivePreview: React.FC<LivePreviewProps> = ({
+  code,
+  channel,
+  scope,
+  providerProps = {},
+}) => {
   const [_code, setCode] = useState(code)
 
   const updateCode = useCallback((code) => {
