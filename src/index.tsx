@@ -1,10 +1,11 @@
 import React from 'react'
 import LivePreview, { LivePreviewProps } from './components/LivePreview'
+import Playground from './components/Playground'
 import addons from '@storybook/addons'
 import { Story } from '@storybook/api'
 import { LiveEditConfig } from './types'
 
-export { LivePreview }
+export { LivePreview, Playground }
 
 /**
  * this is HoC that wraps the story with the LivePreview component
