@@ -34,6 +34,9 @@ module.exports = {
 ```
 
 Use in stories
+
+![image](https://user-images.githubusercontent.com/14357567/154925600-770a8646-549a-4ff9-af8f-b8484e000c18.png)
+
 ```jsx
 // *.stories.jsx
 import { generateLivePreviewStory } from 'storybook-addon-jarle-monaco'
@@ -65,6 +68,31 @@ LiveEditUseLivePreview.parameters = {
     showEditor: true,
   }
 }
+```
+
+Use in MDX
+
+![image](https://user-images.githubusercontent.com/14357567/154925423-334f9593-d3b9-4837-8f21-08ef9f41c154.png)
+
+```mdx
+import { Meta } from '@storybook/addon-docs';
+import { Button } from './Button';
+import { Playground } from '@pupu/storybook-addon-jarle-monaco';
+
+<Meta title="Example/LiveEdit in MDX" />
+
+> Use `Playground` in *.stories.mdx file, it provides live preview and editor
+
+### Button
+
+<Playground
+  code="<Button primary label={'hello'} />"
+  providerProps={{
+    scope: {
+      Button,
+    },
+  }}
+/>
 ```
 
 With liveDecorator
