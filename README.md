@@ -12,7 +12,7 @@ yarn # install dependencies
 yarn storybook # start storybook
 ```
 
-[storybook page](https://hirohe.github.io/storybook-addon-jarle-monaco/?path=/story/example-introduction--page)
+## Demo [storybook page](https://hirohe.github.io/storybook-addon-jarle-monaco/?path=/story/example-liveedit-in-mdx--page)
 
 ## Usage
 
