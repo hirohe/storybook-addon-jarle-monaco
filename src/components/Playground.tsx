@@ -73,20 +73,24 @@ const EditorContent = styled.div`
 
 interface PlaygroundProps<TScope extends Record<string, unknown>> {
   code: string
+  defaultExpanded?: boolean
   scope?: TScope
   providerProps?: Partial<Props<TScope>>
   editorProps?: Partial<EditorProps>
+  className?: string
 }
 
 const Playground: React.FC<PlaygroundProps<never>> = ({
   code,
+  defaultExpanded = false,
   scope,
   providerProps,
   editorProps,
+  className,
 }) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>()
   const [_code, setCode] = useState(code)
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(defaultExpanded)
   const [copied, setCopied] = useState(false)
   const [editorContentHeight, setEditorContentHeight] = useState(0)
 
@@ -128,7 +132,7 @@ const Playground: React.FC<PlaygroundProps<never>> = ({
   }, [open, editorContentHeight])
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <LiveContent>
         <Provider scope={scope} {...providerProps} code={_code}>
           <Preview />
