@@ -1,14 +1,18 @@
 import { Meta } from '@storybook/addon-docs';
-import { Button } from './Button';
-import { Playground } from '../src';
+import { Demo1, Demo2 } from './markdown-demo';
 
 <Meta title="Example/LiveEdit in MDX" />
 
-<Playground
-  code="<Button primary label={'hello'} />"
-  providerProps={{
-    scope: {
-      Button,
-    },
-  }}
-/>
+<style>{`
+.playground {
+  margin-bottom: 24px;
+}
+`}</style>
+
+### Basic
+<Demo1 className="playground" />
+
+---
+
+### Import modules
+<Demo2 className="playground" />
