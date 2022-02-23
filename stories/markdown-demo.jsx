@@ -46,7 +46,7 @@ function cheer() {
       resolveImports: () => ({
         './Button': Button,
         'canvas-confetti': Confetti,
-      })
+      }),
     }}
   />
 )
