@@ -72,7 +72,7 @@ LiveEditUseLivePreview.parameters = {
 
 Use in MDX
 
-![image](https://user-images.githubusercontent.com/14357567/154925423-334f9593-d3b9-4837-8f21-08ef9f41c154.png)
+![image](https://user-images.githubusercontent.com/14357567/155446687-b549ee19-f897-4fcd-8671-010643e695d3.png)
 
 ```mdx
 import { Meta } from '@storybook/addon-docs';
