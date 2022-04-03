@@ -8,6 +8,7 @@
     "dist",
     "preset.js"
   ],
+  "types": "dist/index.d.ts",
   "storybook": {
     "displayName": "Live Edit - Jarle & Monaco",
     "icon": "https://jquense.github.io/jarle/img/logo.svg",
