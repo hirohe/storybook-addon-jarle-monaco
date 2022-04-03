@@ -33,9 +33,9 @@ module.exports = {
 }
 ```
 
-Use in stories
+### Use in stories
 
-![image](https://user-images.githubusercontent.com/14357567/154925600-770a8646-549a-4ff9-af8f-b8484e000c18.png)
+<img width="494" alt="image" src="https://user-images.githubusercontent.com/14357567/161434129-1efd80ef-9181-4cf5-9363-e49daec02dc7.png">
 
 ```jsx
 // *.stories.jsx
@@ -70,9 +70,9 @@ LiveEditUseLivePreview.parameters = {
 }
 ```
 
-Use in MDX
+### Use in MDX
 
-![image](https://user-images.githubusercontent.com/14357567/155446687-b549ee19-f897-4fcd-8671-010643e695d3.png)
+<img width="1018" alt="image" src="https://user-images.githubusercontent.com/14357567/161434201-86d24055-8b0f-4a91-9336-2c460e6c1d33.png">
 
 ```mdx
 import { Meta } from '@storybook/addon-docs';
@@ -95,7 +95,15 @@ import { Playground } from '@pupu/storybook-addon-jarle-monaco';
 />
 ```
 
-With liveDecorator
+### Typescript typings resolve
+
+Check the story [AutoTypings.stories.mdx](https://github.com/hirohe/storybook-addon-jarle-monaco/blob/main/stories/AutoTypings.stories.mdx)
+
+<img width="1027" alt="image" src="https://user-images.githubusercontent.com/14357567/161434547-36ed5346-1805-4310-a335-7ae9a4a825d4.png">
+
+<img width="606" alt="image" src="https://user-images.githubusercontent.com/14357567/161434629-91df26e4-eae1-4012-b3bf-21f2edf4ac13.png">
+
+### With liveDecorator
 
 1. add `liveDecorator` as global decorator
 ```js
@@ -134,5 +142,19 @@ liveEdit config in story's parameters
 |-------------------|---------|---------|--------------------------------------------------|
 | showEditor        | boolean | false   | show the live edit panel or not                  |
 | withLiveDecorator | boolean | false   | wrap the story with LivePreview decorator or not |
+
+### `Playground` Component
+
+| property                  | type                                                                           | default | description                                                                                |
+| --------------------- | ------------------------------------------------------------------------------ | ------ | ----------------------------------------------------------------------------------- |
+| code                  | string                                                                         | --     | required, the code for live edit                                                                |
+| autoTypings           | boolean                                                                        | false  | enable auto typings feature，if true, will set the language to typescript by default |
+| defaultExpand         | boolean                                                                        | false  | expand the editor content                                                                  |
+| scope                 | object                                                                         | --     | prop of Jarle Preview, for global scope injection                                     |
+| providerProps         | [ProviderProps](https://jquense.github.io/jarle/#provider)                     | --     | props for Jarle Provider                                        |
+| resolveTypeDefinition | (packageName: string) => Promise<string &#124; null> &#124; string &#124; null | --     | provide custom type definitions for certain package                       |
+| editorProps           | Partial&lt;EditorProps&gt;                                                     | --     | props for MonacoEditor                                                        |
+| className             | string                                                                         | --     | class for wrapper                                                                     |
+
 
 you can add Jarle's Provider props in liveEdit, check the [Jarle's docs](https://jquense.github.io/jarle/) for more information.
