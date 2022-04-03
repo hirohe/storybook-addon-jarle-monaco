@@ -38,10 +38,13 @@
   "license": "MIT",
   "dependencies": {
     "@babel/cli": "^7.16.8",
-    "@monaco-editor/react": "^4.3.1",
+    "@hirohe/monaco-editor-auto-typings": "^0.2.0",
+    "@monaco-editor/react": "^4.4.1",
     "@react-icons/all-files": "^4.1.0",
     "copy-to-clipboard": "^3.3.1",
     "jarle": "^2.0.0",
+    "monaco-editor": "^0.33.0",
+    "monaco-jsx-highlighter": "^2.0.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },
@@ -51,9 +54,10 @@
     "@storybook/addon-essentials": "^6.4.12",
     "@storybook/addon-links": "^6.4.12",
     "@storybook/react": "^6.4.12",
+    "@types/lodash": "^4.14.181",
     "babel-loader": "^8.2.3",
     "canvas-confetti": "^1.5.1",
-    "monaco-editor": "^0.31.1",
+    "lodash": "^4.17.21",
     "prettier": "^2.5.1",
     "typescript": "^4.5.5"
   },
