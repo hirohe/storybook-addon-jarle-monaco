@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import MonacoEditor from '@monaco-editor/react'
+import MonacoEditor, { OnMount } from '@monaco-editor/react'
 import { Channel } from '@storybook/addons'
-import { event } from '../constants'
+import { defaultEditorOptions, event } from '../constants'
+import EditorWrapper from './EditorWrapper'
+import applyJsxHighlighter from '../utils/apply-jsx-highlighter'
 
 export interface LiveEditorProps {
   channel: Channel
@@ -26,14 +28,22 @@ const LiveEditor: React.FC<LiveEditorProps> = ({ channel }) => {
     }
   }, [])
 
+  const onMount = useCallback<OnMount>((editor, _monaco) => {
+    applyJsxHighlighter(_monaco, editor)
+  }, [])
+
   return (
-    <MonacoEditor
-      height="100%"
-      language="javascript"
-      theme="vs-dark"
-      value={code}
-      onChange={onChange}
-    />
+    <EditorWrapper>
+      <MonacoEditor
+        height="100%"
+        language="javascript"
+        theme="vs-dark"
+        options={defaultEditorOptions}
+        value={code}
+        onChange={onChange}
+        onMount={onMount}
+      />
+    </EditorWrapper>
   )
 }
 

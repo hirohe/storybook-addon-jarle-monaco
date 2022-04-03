@@ -4,10 +4,13 @@ import { event } from '../constants'
 import { Channel } from '@storybook/addons'
 import { Props } from 'jarle/lib/Provider'
 
-export interface LivePreviewProps<TScope extends {} = {}> {
+export interface LivePreviewProps<TScope extends Record<string, unknown> = {}> {
   code: string
+  // channel between Canvas and Panel, get it from addons.getChannel()
   channel: Channel
+  // provide to Jarle Preview, for global scope injection
   scope?: TScope
+  // props of Jarle Provider
   providerProps?: Partial<Props<TScope>>
 }
 
