@@ -65,6 +65,8 @@
   "peerDependencies": {
     "@storybook/addons": "^6",
     "@storybook/components": "^6",
+    "@babel/parser": "^7",
+    "@babel/traverse": "^7",
     "react": "^16"
   }
 }
