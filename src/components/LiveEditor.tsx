@@ -10,6 +10,7 @@ export interface LiveEditorProps {
 }
 
 const LiveEditor: React.FC<LiveEditorProps> = ({ channel }) => {
+  const highlightRef = React.useRef<ReturnType<typeof applyJsxHighlighter>>()
   const [code, setCode] = useState('')
 
   const loadSource = useCallback((val) => {
@@ -25,11 +26,20 @@ const LiveEditor: React.FC<LiveEditorProps> = ({ channel }) => {
 
     return () => {
       channel.removeListener(event.LoadSource, loadSource)
+      if (highlightRef.current) {
+        highlightRef.current.dispose()
+      }
     }
   }, [])
 
   const onMount = useCallback<OnMount>((editor, _monaco) => {
-    applyJsxHighlighter(_monaco, editor)
+    // jsx syntax highlight
+    const controller = applyJsxHighlighter(_monaco, editor)
+    highlightRef.current = controller
+    controller.highlighter()
+    editor.onDidChangeModelContent(() => {
+      controller.highlighter()
+    })
   }, [])
 
   return (

@@ -126,6 +126,7 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
 }) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>()
   const monacoRef = React.useRef<typeof monaco>()
+  const highlightRef = React.useRef<ReturnType<typeof applyJsxHighlighter>>()
   const [_code, setCode] = useState(code)
   const [open, setOpen] = useState(defaultExpanded)
   const [copied, setCopied] = useState(false)
@@ -231,10 +232,24 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
           })
       }
 
-      applyJsxHighlighter(_monaco, editor)
+      // jsx syntax highlight
+      const controller = applyJsxHighlighter(_monaco, editor)
+      controller.highlighter()
+      highlightRef.current = controller
+      editor.onDidChangeModelContent(() => {
+        controller.highlighter()
+      })
     },
     [defaultExpanded, autoTypings, resolveTypeDefinition]
   )
+
+  useEffect(() => {
+    return () => {
+      if (highlightRef.current) {
+        highlightRef.current.dispose()
+      }
+    }
+  }, [])
 
   useEffect(() => {
     editorRef.current?.layout()

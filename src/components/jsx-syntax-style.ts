@@ -1,30 +1,23 @@
 import { css } from '@storybook/theming'
 
-// https://github.com/luminaxster/syntax-highlighter/blob/master/src/styles/MonacoJSXHighlighter.css
 const jsxSyntaxStyle = css`
-  .JSXElement.JSXBracket,
-  .JSXOpeningElement.JSXBracket,
-  .JSXClosingElement.JSXBracket,
-  .JSXSpreadChild.JSXBracket,
-  .JSXSpreadAttribute.JSXBracket {
+  .jsx-tag-angle-bracket {
     color: rgb(135, 135, 135);
   }
 
-  .JSXExpressionContainer.JSXBracket {
+  .jsx-expression-braces {
     color: rgb(46, 140, 210);
   }
 
-  .JSXElement.JSXIdentifier,
-  .JSXOpeningElement.JSXIdentifier,
-  .JSXClosingElement.JSXIdentifier {
+  .jsx-tag-name {
     color: rgb(25, 196, 160);
   }
 
-  .JSXElement.JSXText {
+  .jsx-text {
     color: rgb(210, 210, 210);
   }
 
-  .JSXAttribute.JSXIdentifier {
+  .jsx-tag-attribute-key {
     color: rgb(120, 215, 255);
   }
 `
