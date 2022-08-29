@@ -242,9 +242,11 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
 
   useEffect(() => {
     if (copied) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setCopied(false)
       }, 1000)
+
+      return () => clearTimeout(timer)
     }
   }, [copied])
 
