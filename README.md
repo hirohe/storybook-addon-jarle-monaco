@@ -136,6 +136,9 @@ LiveEditWithLiveDecorator.parameters = {
 
 ## Config
 
+this addon use `@monaco-editor/react`, [by default](https://github.com/suren-atoyan/monaco-react#loader-config) `monaco` files are being downloaded from `CDN`.
+you can config the 
+
 liveEdit config in story's parameters
 
 | property          | type    | default | description                                      |
