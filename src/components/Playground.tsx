@@ -81,7 +81,7 @@ const EditorContent = styled.div`
   ${editorContentCss}
 `
 
-interface PlaygroundProps<TScope extends {} = {}> {
+interface PlaygroundProps<TScope extends Record<string, unknown>> {
   // code text to render
   code: string
   // expand editor content by default
@@ -98,10 +98,19 @@ interface PlaygroundProps<TScope extends {} = {}> {
   ) => Promise<string | undefined> | string | undefined
   // props for MonacoEditor
   editorProps?: Partial<EditorProps>
+  // root container's classname
   className?: string
+  // preview's classname
+  previewClassName?: string
+  // preview's style
+  previewStyle?: React.CSSProperties
+  // editor's classname
+  editorClassName?: string
+  // editor's style
+  editorStyle?: React.CSSProperties
 }
 
-const Playground: React.FC<PlaygroundProps> = ({
+const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
   code,
   autoTypings = false,
   defaultExpanded = false,
@@ -110,6 +119,10 @@ const Playground: React.FC<PlaygroundProps> = ({
   resolveTypeDefinition,
   editorProps,
   className,
+  previewClassName,
+  previewStyle,
+  editorClassName,
+  editorStyle,
 }) => {
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor>()
   const monacoRef = React.useRef<typeof monaco>()
@@ -242,7 +255,7 @@ const Playground: React.FC<PlaygroundProps> = ({
 
   return (
     <Wrapper className={className}>
-      <LiveContent>
+      <LiveContent style={previewStyle} className={previewClassName}>
         <Provider
           language="typescript"
           scope={scope}
@@ -275,7 +288,7 @@ const Playground: React.FC<PlaygroundProps> = ({
         className={open ? 'open' : ''}
         style={{ height: editorContentHeight }}
       >
-        <EditorWrapper>
+        <EditorWrapper style={editorStyle} className={editorClassName}>
           <MonacoEditor
             width="100%"
             theme="vs-dark"
