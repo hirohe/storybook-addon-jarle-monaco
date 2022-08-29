@@ -176,8 +176,20 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
   const onMount = useCallback<OnMount>(
     (editor, _monaco) => {
       editorRef.current = editor
+
+      // sometimes onDidContentSizeChange will not trigger on initial load,
+      // if defaultExpanded needed, update the height manually.
+      if (defaultExpanded) setEditorContentHeight(editor.getContentHeight())
+
       editor.onDidContentSizeChange((e) => {
-        setEditorContentHeight(e.contentHeight)
+        setEditorContentHeight((height) => {
+          if (!defaultExpanded) {
+            // when not defaultExpanded, update the height only if it is opened
+            return height !== 0 ? e.contentHeight : height
+          } else {
+            return e.contentHeight
+          }
+        })
         editor.layout()
       })
 
@@ -221,7 +233,7 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
 
       applyJsxHighlighter(_monaco, editor)
     },
-    [autoTypings, resolveTypeDefinition]
+    [defaultExpanded, autoTypings, resolveTypeDefinition]
   )
 
   useEffect(() => {
@@ -238,16 +250,16 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
 
   useEffect(() => {
     if (open) {
-      if (editorContentHeight === 0) {
-        // TODO maybe had a better way to update editor content height
-        setTimeout(() => {
-          setEditorContentHeight(editorRef.current?.getContentHeight())
-        }, 200)
+      // update height if the editor is ready
+      if (editorRef.current) {
+        setEditorContentHeight(
+          (height) => editorRef.current?.getContentHeight() || height
+        )
       }
     } else {
       setEditorContentHeight(0)
     }
-  }, [open, editorContentHeight])
+  }, [open])
 
   const defaultLanguage = useMemo(() => {
     return autoTypings ? 'typescript' : 'javascript'
@@ -286,7 +298,7 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
       </SummaryBar>
       <EditorContent
         className={open ? 'open' : ''}
-        style={{ height: editorContentHeight }}
+        style={{ minHeight: editorContentHeight, position: 'relative' }}
       >
         <EditorWrapper style={editorStyle} className={editorClassName}>
           <MonacoEditor
