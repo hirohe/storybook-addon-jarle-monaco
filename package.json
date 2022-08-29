@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-jarle-monaco",
-  "version": "0.4.1",
+  "version": "0.5.0-beta",
   "description": "storybook.js addon providing react-live preview and monaco-editor editing",
   "main": "dist/index.js",
   "files": [
