@@ -46,8 +46,8 @@
     "jarle": "^2.0.0",
     "monaco-editor": "^0.33.0",
     "monaco-jsx-highlighter": "^2.0.4",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -67,6 +67,6 @@
     "@storybook/components": "^6",
     "@babel/parser": "^7",
     "@babel/traverse": "^7",
-    "react": "^16"
+    "react": ">=16"
   }
 }
