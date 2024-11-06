@@ -300,7 +300,7 @@ const Playground: React.FC<PlaygroundProps<Record<string, unknown>>> = ({
       </SummaryBar>
       <EditorContent
         className={open ? 'open' : ''}
-        style={{ minHeight: editorContentHeight, position: 'relative' }}
+        style={{ minHeight: open ? editorContentHeight : 0, position: 'relative' }}
       >
         <EditorWrapper style={editorStyle} className={editorClassName}>
           <MonacoEditor
