@@ -18,4 +18,7 @@ export const defaultEditorOptions: monaco.editor.IStandaloneEditorConstructionOp
       enabled: false,
     },
     fixedOverflowWidgets: true,
+    scrollbar: {
+      alwaysConsumeMouseWheel: false,
+    }
   }
